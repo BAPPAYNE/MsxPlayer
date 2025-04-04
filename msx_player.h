@@ -38,7 +38,8 @@ private:
     bool isClicked;
 
 public:
-    Button(const std::string& label, float x, float y, float width, float height, const sf::Color& color, sf::Font& font);
+    Button(const std::string& label, float x, float y, float width, float height, const sf::Color& color, sf::Font& font, 
+           unsigned int textSize = 20, float originOffsetX = 0.0f, float originOffsetY = 0.0f);
     void draw(sf::RenderWindow& window);
     bool contains(sf::Vector2f point);
     void setClicked(bool clicked);

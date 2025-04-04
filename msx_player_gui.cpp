@@ -100,21 +100,22 @@ const std::vector<std::string>& MusicPlayer::getPlaylist() const { return playli
 size_t MusicPlayer::getCurrentTrack() const { return currentTrack; }
 bool MusicPlayer::getIsPlaying() const { return isPlaying; }
 
-// Button class unchanged
-
-// Button implementation (unchanged)
-Button::Button(const std::string& label, float x, float y, float width, float height, const sf::Color& color, sf::Font& font) 
+// Button class implementation
+Button::Button(const std::string& label, float x, float y, float width, float height, const sf::Color& color, sf::Font& font, 
+               unsigned int textSize, float originOffsetX, float originOffsetY) 
     : isClicked(false) {
     shape.setSize(sf::Vector2f(width, height));
     shape.setPosition(x, y);
     shape.setFillColor(color);
+
     text.setFont(font);
     text.setString(label);
-    text.setCharacterSize(18);
+    text.setCharacterSize(textSize);
     text.setFillColor(sf::Color::Black);
+    
     sf::FloatRect textRect = text.getLocalBounds();
-    text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
-    text.setPosition(x + width / 3.0f, y + height / 2.0f);
+    text.setOrigin(textRect.width / 2.0f + originOffsetX, textRect.height / 2.0f + originOffsetY);
+    text.setPosition(x + width / 2.0f, y + height / 2.0f);
 }
 
 void Button::draw(sf::RenderWindow& window) {
