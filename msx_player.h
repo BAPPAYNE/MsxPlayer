@@ -25,6 +25,7 @@ public:
     void stop();
     void next();
     void previous();
+    void setTrack(size_t trackIndex);
     const std::vector<std::string>& getPlaylist() const;
     size_t getCurrentTrack() const;
     bool getIsPlaying() const;
